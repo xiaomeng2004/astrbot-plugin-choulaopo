@@ -61,7 +61,7 @@ async def daily_reset(config_manager):
         daily_counts.clear()
         logger.info("Daily records and counts cleared.")
 
-@register("choulaopo", "糯米茨", "抽取QQ群友当老婆的插件", "1.0")
+@register("choulaopo", "糯米茨", "抽取QQ群友当老婆的插件", "1.0.1")
 class chouqunyou(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -161,41 +161,6 @@ class chouqunyou(Star):
         else:
             yield event.plain_result("你今日还未抽取老婆")
 
-    @filter.permission_type(filter.PermissionType.ADMIN)
-    @filter.command("次数限制", args="\d+")
-    async def set_draw_limit(self, event: AstrMessageEvent):
-        # 修复点：使用 get_command_args() 获取参数
-        args = event.get_command_args()
-        try:
-            limit = int(args[0])
-            if limit < 1:
-                raise ValueError("次数不能小于1")
-            self.config_manager.set_draw_limit(limit)
-            yield event.plain_result(f"每日抽取上限设置为 {limit} 次")
-        except (ValueError, IndexError):
-            yield event.plain_result("参数错误！使用 /次数限制 [数字]")
-
-    @filter.permission_type(filter.PermissionType.ADMIN)
-    @filter.command("次数重置", args="([-@]\d+)?")
-    async def reset_draw_count(self, event: AstrMessageEvent):
-        # 修复点：使用 get_command_args() 获取参数
-        args = event.get_command_args()
-        target_id = None
-        
-        if args and args[0].startswith('-@'):
-            try:
-                target_id = int(args[0][2:])
-            except ValueError:
-                yield event.plain_result("参数错误！使用 /次数重置 [-@QQ号]")
-                return
-        else:
-            target_id = event.get_sender_id()
-            
-        if target_id in daily_counts:
-            daily_counts[target_id] = 0
-            yield event.plain_result(f"已重置用户 {target_id} 的抽取次数")
-        else:
-            yield event.plain_result(f"用户 {target_id} 无抽取记录")
 
     @filter.command("帮助", alias={'help'})
     async def help(self, event: AstrMessageEvent):
@@ -203,8 +168,6 @@ class chouqunyou(Star):
             "帮助信息：\n"
             "/今日老婆 - 抽取今日老婆\n"
             "/今日记录 - 查看抽取记录\n"
-            "/次数限制 [数字] - 设置抽取上限(管理员)\n"
-            "/次数重置 [-@QQ号] - 重置次数(管理员)\n"
             "/帮助 - 查看帮助"
         )
         yield event.plain_result(help_text)
