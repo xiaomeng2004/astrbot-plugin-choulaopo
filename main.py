@@ -68,7 +68,7 @@ class chouqunyou(Star):
         self.config_manager = ConfigManager(CONFIG_PATH)
         asyncio.create_task(daily_reset(self.config_manager))
 
-@register("choulaopo", "糯米茨", "抽取QQ群友当老婆的插件", "1.0")
+@register("choulaopo_01", "糯米茨", "抽取QQ群友当老婆的插件", "1.0")
 class chouqunyou(Star):
     def __init__(self, context: Context):
         super().__init__(context)
