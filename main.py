@@ -61,7 +61,7 @@ async def daily_reset(config_manager):
         daily_counts.clear()
         logger.info("Daily records and counts cleared.")
 
-@register("choulaopo", "糯米茨", "抽取QQ群友当老婆的插件", "1.0.1")
+@register("choulaopo", "糯米茨", "[仅napcat]这是用于抽取QQ群友当老婆的插件。", "1.0.1")
 class chouqunyou(Star):
     def __init__(self, context: Context):
         super().__init__(context)
