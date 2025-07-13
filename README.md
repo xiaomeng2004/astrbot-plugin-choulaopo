@@ -4,7 +4,7 @@ AstrBot 插件
 仅支持aicqhttp.QQ  
 从QQ群里抽取一个群友当老婆
 
-灵感来源：[抽群友](https://github.com/tenno1174/astrbot_plugin_chouqunyou)
+灵感来源：[抽群友](https://github.com/tenno1174/astrbot-plugin-chouqunyou)
 # 命令列表
 ## 用户命令
 `/今日老婆`抽取并@随机群友  
