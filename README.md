@@ -1,7 +1,6 @@
 # 抽老婆
 AstrBot 插件
-版本1.1（beta01）
-仅支持aicqhttp.QQ  
+版本1.0.3（beta03）  
 从QQ群里抽取一个群友当老婆
 
 灵感来源：[抽群友](https://github.com/tenno1174/astrbot-plugin-chouqunyou)
