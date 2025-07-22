@@ -70,20 +70,6 @@ async def daily_reset(config_manager):
         wife_stat_today.clear()
         logger.info("Daily records, counts and today wife stats cleared.")
 
-@register("choulaopo", "糯米茨", "[仅napcat]这是用于抽取QQ群友当老婆的插件。", "1.0.1")
-class chouqunyou(Star):
-    def __init__(self, context: Context):
-        super().__init__(context)
-        self.config_manager = ConfigManager(CONFIG_PATH)
-        asyncio.create_task(daily_reset(self.config_manager))
-
-@register("choulaopo_01", "糯米茨", "抽取QQ群友当老婆的插件", "1.0")
-class chouqunyou(Star):
-    def __init__(self, context: Context):
-        super().__init__(context)
-        self.config_manager = ConfigManager(CONFIG_PATH)
-        asyncio.create_task(daily_reset(self.config_manager))
-
     # 辅助方法：处理抽取逻辑，根据参数决定是否At被抽取用户
     # daily_records[sender_id] 现为列表，每次抽取追加一条记录，便于用户查询所有抽取结果
     async def _draw_wife(self, event: AstrMessageEvent, at_selected_user: bool):
