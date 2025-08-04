@@ -211,13 +211,13 @@ class ChoulaopoPlugin(Star):
         
         yield event.chain_result(chain)
 
-    @filter.command("今日老婆", alias={'抽取', '抽老婆'})
+    @filter.command("今日老婆+@", alias={'抽取+@', '抽老婆+@'})
     async def wife_with_at(self, event: AstrMessageEvent):
         """抽取老婆并@被抽中的用户"""
         async for result in self._draw_wife(event, True):
             yield result
 
-    @filter.command("今日老婆-@", alias={'抽取-@', '抽老婆-@'})
+    @filter.command("今日老婆", alias={'抽取', '抽老婆'})
     async def wife_without_at(self, event: AstrMessageEvent):
         """抽取老婆但不@被抽中的用户"""
         async for result in self._draw_wife(event, False):
